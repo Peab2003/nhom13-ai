@@ -11,4 +11,4 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Install FFmpeg
-      uses: marvinpinto/action-ffmpeg@v3
+      run: sudo apt update && sudo apt install -y ffmpeg
