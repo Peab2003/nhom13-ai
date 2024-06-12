@@ -27,7 +27,9 @@ jobs:
           pip install pytube speechrecognition moviepy
 
       - name: Install FFmpeg
-        run: sudo apt-get install ffmpeg
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
 
       - name: Run transcription script
         run: python YOUR_SCRIPT_NAME.py
