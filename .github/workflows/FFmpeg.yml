@@ -32,4 +32,4 @@ jobs:
           sudo apt-get install -y ffmpeg
 
       - name: Run transcription script
-        run: python YOUR_SCRIPT_NAME.py
+        run: python model.py
