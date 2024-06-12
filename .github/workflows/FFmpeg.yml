@@ -1,34 +1,22 @@
-name: Transcribe YouTube Video
+name: Install FFmpeg
 
 on:
   push:
     branches:
-      - main
+      - main  # Chỉ cài đặt FFmpeg khi có commit vào nhánh main
   pull_request:
     branches:
-      - main
+      - main  # Chỉ cài đặt FFmpeg khi có pull request vào nhánh main
 
 jobs:
-  transcribe:
-    runs-on: ubuntu-latest
+  install-ffmpeg:
+    runs-on: ubuntu-latest  # Chạy trên Ubuntu
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.9'
-
-      - name: Setup FFmpeg
-        uses: AnimMouse/setup-ffmpeg@v1
-
-      - name: Update package repository
-        run: sudo apt-get update
+      - name: Checkout code
+        uses: actions/checkout@v2  # Checkout mã nguồn của bạn
 
       - name: Install FFmpeg
-        run: sudo apt-get install ffmpeg
-
-      - name: Run transcription script
-        run: python transcribe_youtube.py
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
