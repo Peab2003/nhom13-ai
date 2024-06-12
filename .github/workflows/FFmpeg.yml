@@ -1,0 +1,24 @@
+name: Transcribe YouTube Video
+
+on: [push]
+
+jobs:
+  transcribe:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.8'
+
+    - name: Install dependencies
+      run: |
+        pip install pytube3
+        pip install speechrecognition
+        sudo apt-get install ffmpeg
+
+    - name: Run transcription script
+      run: python your_script.py
