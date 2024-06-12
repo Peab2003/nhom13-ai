@@ -24,10 +24,16 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install pytube speechrecognition moviepy
+          pip install pytube3 speechrecognition moviepy
 
       - name: Setup FFmpeg
         uses: AnimMouse/setup-ffmpeg@v1
 
+      - name: Update package repository
+        run: sudo apt-get update
+
+      - name: Install FFmpeg
+        run: sudo apt-get install ffmpeg
+
       - name: Run transcription script
-        run: python model.py
+        run: python transcribe_youtube.py
