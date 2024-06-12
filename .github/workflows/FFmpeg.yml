@@ -26,10 +26,8 @@ jobs:
           python -m pip install --upgrade pip
           pip install pytube speechrecognition moviepy
 
-      - name: Install FFmpeg
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y ffmpeg
+      - name: Setup FFmpeg
+        uses: AnimMouse/setup-ffmpeg@v1
 
       - name: Run transcription script
         run: python model.py
